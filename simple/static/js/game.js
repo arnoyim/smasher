@@ -22,7 +22,8 @@ var player2Lives = 4;
 //var dashRight = false;
 //var sword;
 
-
+// Both create player functions use a lot of similar code, should abstract this out and 
+// just set up the independent parts separately (i.e. control keys)
 function createplayer1() {
 
     player = game.add.sprite(200, game.world.height - 300, 'dude');
@@ -83,6 +84,7 @@ function createplayer2() {
 }
 
 
+// Need to clean up a lot of commented out code, hard to read
 function create() {
 
 
@@ -184,7 +186,11 @@ function create() {
 
 //var distance = game.physics.arcade.distanceBetween(player, player2);
 
+// This does the same checks for both players, should make a function that does
+// those checks and takes in the player to check as an argument.
 
+// May make sense to make the players "objects" so that you can just call functions
+// on them to organize the code and deduplicate sections.
 function update() {
 
 
@@ -291,6 +297,7 @@ function update() {
 
 }
 
+// Again, you can abstract out and deduplicate the code here
 function fallout() {
     playerLives--;
     P1text.text = 'lives: ' + playerLives;
